@@ -84,7 +84,7 @@ const applyFiltering = initFiltering(sampleTable.filter.elements, {
     searchBySeller: indexes.sellers
 })
 
-const applySearching = initSearching(sampleTable.search)
+const applySearching = initSearching('search')
 
 
 const appRoot = document.querySelector('#app');
