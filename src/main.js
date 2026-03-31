@@ -26,14 +26,14 @@ function collectState() {
 
     const rowsPerPage = parseInt(state.rowsPerPage);
     const page = parseInt(state.page ?? 1)
-    const totalFrom = parseFloat(state.totalFrom)
-    const totalTo = parseFloat(state.totalTo)
+    // const totalFrom = parseFloat(state.totalFrom)
+    // const totalTo = parseFloat(state.totalTo)
 
     return {
         ...state,
         rowsPerPage,
         page,
-        total: [totalFrom, totalTo]
+        // total: [totalFrom, totalTo]
     };
 }
 
@@ -50,11 +50,10 @@ async function render(action) {
     // result = applyFiltering(result, state, action);
     // result = applySorting(result, state, action);
     // result = applyPagination(result, state, action);
-
-    query = applyFiltering(query, state, action);
-    query = applyPagination(query, state, action);
     query = applySearching(query, state, action);
+    query = applyFiltering(query, state, action);
     query = applySorting(query, state, action);
+    query = applyPagination(query, state, action);
 
     const { total, items } = await api.getRecords(query)
 
